@@ -1,0 +1,3 @@
+C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/cmake-build-debug/CMakeFiles/Proyecto_I_C_.dir
+C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/cmake-build-debug/CMakeFiles/edit_cache.dir
