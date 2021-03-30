@@ -1,5 +1,0 @@
-C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/build-Proyecto_I-Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/Proyecto_I.dir
-C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/build-Proyecto_I-Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/build-Proyecto_I-Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/build-Proyecto_I-Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/Proyecto_I_autogen_timestamp_deps.dir
-C:/Users/Admin/Desktop/Kenneth OneDrive/OneDrive - Estudiantes ITCR/TEC/Semestre 1 2021/Datos II/Proyecto-I-C-/build-Proyecto_I-Desktop_x86_windows_msys_pe_64bit-Debug/CMakeFiles/Proyecto_I_autogen.dir
