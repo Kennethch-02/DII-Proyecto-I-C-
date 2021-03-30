@@ -13,3 +13,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_Run_Button_clicked()
+{
+
+}
+
+void MainWindow::on_Stop_Button_clicked()
+{
+
+}
