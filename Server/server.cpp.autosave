@@ -1,5 +1,6 @@
 #include "server.h"
 #include "client.h"
+#include "json.h"
 #include <QLocalSocket>
 #include <QTextStream>
 #include <QDebug>
@@ -11,21 +12,24 @@ bool server::startServer(quint16 port){
     return listen(QHostAddress::Any, port);
 }
 void server::incomingConnection(qintptr handle){
+    qDebug()<<"CONECTADO "<<handle;
     auto socket = new client(handle, this);
     mSockets << socket;
-    qDebug()<<"CONECTADO";
+    for(auto a : mSockets){
+        QTextStream M(a);
+        M<<"Servidor: Se ha Conectado";
+        a->flush();
+    }
     connect(socket, &client::AppReadyRead, [&](client *S){
+        //Recepcion de Mensajes
         QTextStream T(S);
         auto text = T.readAll();
-        qDebug()<< text;
-        for(auto i : mSockets){
-            QTextStream K(i);
-            K<<text;
-            i->flush();
-        }
+        json j;
+        message M = j.getClass(text);
     });
     connect(socket, &client::StateChanged, [&](client *S, int ST){
         if (ST == QTcpSocket::UnconnectedState){
+            qDebug()<<"UnconnectedState: "<<S->socketDescriptor();
             mSockets.removeOne(S);
             for (auto i : mSockets){
                 QTextStream K(i);
