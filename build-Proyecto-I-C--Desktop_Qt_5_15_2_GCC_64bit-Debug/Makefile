@@ -776,6 +776,24 @@ moc_mainwindow.cpp: ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../update_text.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
+		../json.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/quuid.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h \
+		../message.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
 		moc_predefs.h \
 		../../../Qt/5.15.2/gcc_64/bin/moc
 	/home/kenneth/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include /home/kenneth/Escritorio/Proyecto-I-C-/build-Proyecto-I-C--Desktop_Qt_5_15_2_GCC_64bit-Debug/moc_predefs.h -I/home/kenneth/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I/home/kenneth/Escritorio/Proyecto-I-C- -I/home/kenneth/Qt/5.15.2/gcc_64/include -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtWidgets -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtGui -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtNetwork -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../mainwindow.h -o moc_mainwindow.cpp
@@ -885,7 +903,9 @@ json.o: ../json.cpp ../json.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QTextStream
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QTextStream \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonDocument \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsondocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o json.o ../json.cpp
 
 main.o: ../main.cpp ../mainwindow.h \
@@ -1000,6 +1020,24 @@ main.o: ../main.cpp ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../update_text.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
+		../json.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborvalue.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborcommon.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/quuid.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonArray \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h \
+		../message.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
 		../server.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpServer \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtcpserver.h \
@@ -1126,45 +1164,12 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
-		ui_mainwindow.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QVariant \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QGridLayout \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QLineEdit \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtextcursor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtextformat.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QStatusBar \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QTextEdit \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QWidget \
-		../message.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QTextStream \
+		../update_text.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
+		../json.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonvalue.h \
@@ -1174,7 +1179,13 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/quuid.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonArray \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h \
+		../message.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
+		ui_mainwindow.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QTextStream \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonDocument \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsondocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../mainwindow.cpp
 
 message.o: ../message.cpp ../message.h \
