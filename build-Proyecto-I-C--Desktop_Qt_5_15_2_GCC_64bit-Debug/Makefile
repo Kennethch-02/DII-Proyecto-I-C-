@@ -776,11 +776,6 @@ moc_mainwindow.cpp: ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../update_text.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
 		../json.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
@@ -1020,11 +1015,6 @@ main.o: ../main.cpp ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../update_text.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
 		../json.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
@@ -1164,11 +1154,6 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../update_text.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QThread \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qelapsedtimer.h \
 		../json.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \

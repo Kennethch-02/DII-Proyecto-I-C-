@@ -155,14 +155,12 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     if (str == line.split(" ")[0]){
                         Correct = true;
                         var = str;
-
                     }
                 }
                 if (!Correct and !in_struct){
                     tipo = "invalid type";
                     line = QString::number(contador);
-                    Errors.append("Error: "+tipo+" Line: " + line);
-                }
+                    Errors.append("Error: "+tipo+" Line: " + line);              }
                 if (var != "struct" and var != "reference" and var != ""){
                     if (!line.endsWith(";")){
                         tipo = "without ;";
@@ -170,21 +168,23 @@ void MainWindow::on_TEXT_CODE_textChanged()
                         Errors.append("Error: "+tipo+" Line: " + line);
                     }else if(line.endsWith(";")){
                         line.remove(";");
-
                         QStringList x = line.split(" ");
                         x.removeAll("");
                         qDebug()<<x;
                         int size  = x.size();
                         if(size != 2 and size != 4){
-                            tipo = "invalid declaration";
-                            line = QString::number(contador);
-                            Errors.append("Error: "+tipo+" Line: " + line);
+                            if(line.split(" ")[0] != "}"){
+                                tipo = "invalid declaration";
+                                line = QString::number(contador);
+                                Errors.append("Error: "+tipo+" Line: " + line);
+                            }
                         }
+                        line.append(";");
                     }
                 }
                 if (var == "struct"){
                     in_struct = true;
-                    var == "";
+                    var = "";
                     if(!line.endsWith("{")){
                         tipo = "without {";
                         line = QString::number(contador);

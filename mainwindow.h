@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include <QTcpSocket>
-#include <update_text.h>
 #include <json.h>
 #include <message.h>
 QT_BEGIN_NAMESPACE
