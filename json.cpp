@@ -1,7 +1,9 @@
 #include "json.h"
 #include "QTextStream"
 #include "QString"
-
+#include "QJsonDocument"
+#include "QJsonArray"
+#include "QJsonObject"
 json::json()
 {
 
@@ -13,13 +15,19 @@ QJsonObject json::Parse(message Message){
     Json.insert("Data", QJsonValue::fromVariant(Message.data));
     return Json;
 }
-message json::getClass(QJsonObject Json){
+message json::getClass(QString str){
     message Message;
-    QJsonValue type = Json["Type"];
-    QJsonValue action = Json["Action"];
-    QJsonValue data = Json["Data"];
-    Message.setType(type.toString());
-    Message.setAction(action.toString());
-    Message.setData(data.toString());
+    QJsonObject json_object;
+    QJsonDocument json_recive = QJsonDocument::fromJson(str.toLatin1());
+    QJsonArray jsonArray = json_recive.array();
+    if(!jsonArray.isEmpty()){
+        QJsonObject json_object = jsonArray.first().toObject();
+        QJsonValue type = json_object["Type"];
+        QJsonValue action = json_object["Action"];
+        QJsonValue data = json_object["Data"];
+        Message.setType(type.toString());
+        Message.setAction(action.toString());
+        Message.setData(data.toString());
+    }
     return Message;
 }

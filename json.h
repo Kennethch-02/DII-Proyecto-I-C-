@@ -10,7 +10,7 @@ class json
 public:
     json();
     QJsonObject Parse(message Message);
-    message getClass(QJsonObject Json);
+    message getClass(QString str);
 };
 
 #endif // JSON_H

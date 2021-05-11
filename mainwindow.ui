@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>799</width>
-    <height>759</height>
+    <height>770</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="BTN_STOP">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>STOP</string>
          </property>
@@ -42,6 +45,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="BTN_NEXT">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>NEXT</string>
          </property>
@@ -95,7 +101,7 @@
      <rect>
       <x>0</x>
       <y>40</y>
-      <width>81</width>
+      <width>72</width>
       <height>461</height>
      </rect>
     </property>
@@ -103,7 +109,29 @@
      <item>
       <widget class="QTextEdit" name="NUM_LINE">
        <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Source Code Pro'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -112,24 +140,33 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>40</x>
       <y>40</y>
-      <width>461</width>
+      <width>541</width>
       <height>461</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QTextEdit" name="TEXT_CODE"/>
+      <widget class="QTextEdit" name="TEXT_CODE">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="textInteractionFlags">
+        <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>580</x>
       <y>40</y>
-      <width>261</width>
+      <width>221</width>
       <height>461</height>
      </rect>
     </property>
@@ -137,7 +174,7 @@
      <item>
       <widget class="QTextEdit" name="RAM_1">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -151,44 +188,56 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QTextEdit" name="RAM_2">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="maximumSize">
         <size>
          <width>50</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QTextEdit" name="RAM_3">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="maximumSize">
         <size>
          <width>50</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QTextEdit" name="RAM_4">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="maximumSize">
         <size>
          <width>50</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -200,12 +249,15 @@
       <x>0</x>
       <y>500</y>
       <width>801</width>
-      <height>171</height>
+      <height>191</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <widget class="QTextEdit" name="CMD_TEXT">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -221,23 +273,36 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>670</y>
+      <y>690</y>
       <width>801</width>
-      <height>91</height>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLineEdit" name="APLICATION_LOG">
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="CLEAR">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="CLEAR">
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="APLICATION_LOG">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QProgressBar" name="ProgressBar">
+       <property name="value">
+        <number>0</number>
        </property>
       </widget>
      </item>
