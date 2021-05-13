@@ -96,7 +96,6 @@ void MainWindow::Interpreter(){
 
 }
 void MainWindow::check_code(){
-
     //ui->TEXT_CODE->clear();
 }
 void MainWindow::on_BTN_RUN_clicked()
@@ -133,7 +132,6 @@ void MainWindow::on_BTN_NEXT_clicked()
         Interpreter();
     }
 }
-
 void MainWindow::on_TEXT_CODE_textChanged()
 {
     //Numera el num line
@@ -166,7 +164,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     if (!line.endsWith(";")){
                         tipo = "without ;";
                         Line = QString::number(contador);
-                        Errors.append("Error: "+tipo+" Line: " + line);
+                        Errors.append("Error: "+tipo+" Line: " + Line);
                     }else if(line.endsWith(";")){
                         line.remove(";");
                         QStringList x = line.split(" ");
@@ -177,7 +175,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
                             if(line.split(" ")[0] != "}"){
                                 tipo = "invalid declaration";
                                 Line = QString::number(contador);
-                                Errors.append("Error: "+tipo+" Line: " + line);
+                                Errors.append("Error: "+tipo+" Line: " + Line);
                             }
                         }
                         line.append(";");
@@ -189,31 +187,31 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     if(!line.endsWith("{")){
                         tipo = "without {";
                         Line = QString::number(contador);
-                        Errors.append("Error: "+tipo+" Line: " + line);
+                        Errors.append("Error: "+tipo+" Line: " + Line);
                     }
                 }
                 if (var == "reference"){
-                    QString new_line = line.split(" ")[1];
-                    //QStringList observable = line.split(" ").removeAll("");
                     if (!line.endsWith(";")){
                         tipo = "without ;";
                         Line = QString::number(contador);
-                        Errors.append("Error: "+tipo+" Line: " + line);
+                        Errors.append("Error: "+tipo+" Line: " + Line);
                     }
-                    else if (new_line.size()>0){
-                        if(!new_line.endsWith(">") and !new_line.startsWith("<")){
+                    else if (line.split(" ").size()>1){
+                        QString new_line = line.split(" ")[1];
+                        new_line.remove(";");
+                        qDebug()<<new_line;
+                        if(!new_line.startsWith("<") or !new_line.endsWith(">")){
                             tipo = "without < >";
                             Line = QString::number(contador);
-                            Errors.append("Error: "+tipo+" Line: " + line);
+                            Errors.append("Error: "+tipo+" Line: " + Line);
                         }else{
-                            tipo = "without <type>";
-                            Line = QString::number(contador);
-                            Errors.append("Error: "+tipo+" Line: " + line);
+                            if (new_line.size() == 2){
+                                tipo = "without <type>";
+                                Line = QString::number(contador);
+                                Errors.append("Error: "+tipo+" Line: " + Line);
+                            }
                         }
-                    }else if (true){
-
                     }
-
                 }
             }
             if(line[0] == "}" and in_struct){
