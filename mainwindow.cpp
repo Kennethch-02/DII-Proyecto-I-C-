@@ -147,6 +147,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
     bool Correct = false;
     QString tipo;
     QString var = "";
+    QString Line;
     in_struct = false;
     for (QString line : a){
         if(line.size() > 0){
@@ -159,12 +160,12 @@ void MainWindow::on_TEXT_CODE_textChanged()
                 }
                 if (!Correct and !in_struct){
                     tipo = "invalid type";
-                    line = QString::number(contador);
+                    Line = QString::number(contador);
                     Errors.append("Error: "+tipo+" Line: " + line);              }
                 if (var != "struct" and var != "reference" and var != ""){
                     if (!line.endsWith(";")){
                         tipo = "without ;";
-                        line = QString::number(contador);
+                        Line = QString::number(contador);
                         Errors.append("Error: "+tipo+" Line: " + line);
                     }else if(line.endsWith(";")){
                         line.remove(";");
@@ -175,7 +176,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
                         if(size != 2 and size != 4){
                             if(line.split(" ")[0] != "}"){
                                 tipo = "invalid declaration";
-                                line = QString::number(contador);
+                                Line = QString::number(contador);
                                 Errors.append("Error: "+tipo+" Line: " + line);
                             }
                         }
@@ -187,18 +188,38 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     var = "";
                     if(!line.endsWith("{")){
                         tipo = "without {";
-                        line = QString::number(contador);
+                        Line = QString::number(contador);
                         Errors.append("Error: "+tipo+" Line: " + line);
                     }
                 }
                 if (var == "reference"){
+                    QString new_line = line.split(" ")[1];
+                    //QStringList observable = line.split(" ").removeAll("");
+                    if (!line.endsWith(";")){
+                        tipo = "without ;";
+                        Line = QString::number(contador);
+                        Errors.append("Error: "+tipo+" Line: " + line);
+                    }
+                    else if (new_line.size()>0){
+                        if(!new_line.endsWith(">") and !new_line.startsWith("<")){
+                            tipo = "without < >";
+                            Line = QString::number(contador);
+                            Errors.append("Error: "+tipo+" Line: " + line);
+                        }else{
+                            tipo = "without <type>";
+                            Line = QString::number(contador);
+                            Errors.append("Error: "+tipo+" Line: " + line);
+                        }
+                    }else if (true){
+
+                    }
 
                 }
             }
             if(line[0] == "}" and in_struct){
                 if(!line.endsWith(";")){
                     tipo = "without ;";
-                    line = QString::number(contador);
+                    Line = QString::number(contador);
                     Errors.append("Error: "+tipo+" Line: " + line);
                 }
                 else if(line.endsWith(";")){
@@ -206,7 +227,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     if (a.size() > 1){
                         if(a[1].size() == 1){
                             tipo = "without class";
-                            line = QString::number(contador);
+                            Line = QString::number(contador);
                             Errors.append("Error: "+tipo+" Line: " + line);
                         }else if (a[1].size() > 1){
                             in_struct = false;
@@ -214,7 +235,7 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     }
                     else{
                         tipo = "need use space";
-                        line = QString::number(contador);
+                        Line = QString::number(contador);
                         Errors.append("Error: "+tipo+" Line: " + line);
                     }
                 }
