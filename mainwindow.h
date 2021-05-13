@@ -24,7 +24,7 @@ private slots:
 private:
     void Send_Message();
     void Interpreter();
-    void check_code();
+    void Interpreter_Message();
     int List_size;
     int Line;
     bool in_struct;

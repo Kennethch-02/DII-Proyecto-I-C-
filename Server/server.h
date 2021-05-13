@@ -13,11 +13,13 @@ class server : public QTcpServer
 public:
     server(QObject *parent = nullptr);
     bool startServer(quint16 port);
+    int memory;
 protected:
     void incomingConnection(qintptr handle);
 private:
     void Send_Message();
     void Do_Action();
+
     QMap<QString,  int*> dic_Datos;
     message Message;
     message Received_Message;

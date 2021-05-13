@@ -1,13 +1,16 @@
 #include <QCoreApplication>
+#include <QApplication>
+#include <QTextStream>
 #include <server.h>
+#include "window.h"
+#include "iostream"
+
+//#include <QDataStream>
 int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
-    server Server;
-    if (!Server.startServer(1234)){
-        qDebug()<< Server.errorString();
-        return 1;
-    }
-    qDebug()<<"Servidor Iniciado";
-    return a.exec();
+{    
+    //QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
+    window w;
+    w.exec();
+    //return a.exec();
 }

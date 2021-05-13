@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
       <x>0</x>
       <y>500</y>
       <width>801</width>
-      <height>191</height>
+      <height>221</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -273,7 +273,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>690</y>
+      <y>720</y>
       <width>801</width>
       <height>51</height>
      </rect>
@@ -309,7 +309,6 @@ p, li { white-space: pre-wrap; }
     </layout>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

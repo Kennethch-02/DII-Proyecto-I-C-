@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
         QTextStream T(mSocket);
         auto text = T.readAll();
         received_message = Json.getClass(text);
-        ui->CMD_TEXT->append(received_message.data);
+        Interpreter_Message();
     });
     in_struct = false;
     variables.append("int");
@@ -48,6 +48,9 @@ void MainWindow::Send_Message(){
     QString a = QString::fromLatin1(jsDoc.toJson());
     A<<a;
     A.flush();
+}
+void MainWindow::Interpreter_Message(){
+
 }
 void MainWindow::Interpreter(){
     Line+=1;
@@ -95,9 +98,6 @@ void MainWindow::Interpreter(){
     }
 
 }
-void MainWindow::check_code(){
-    //ui->TEXT_CODE->clear();
-}
 void MainWindow::on_BTN_RUN_clicked()
 {
     //Run del codigo, procede a interpretarlo
@@ -110,7 +110,7 @@ void MainWindow::on_BTN_RUN_clicked()
     ui->BTN_STOP->setDisabled(false);
     ui->TEXT_CODE->clear();
     if (!List_Code.isEmpty()){
-        check_code();
+        Interpreter();
     }
 }
 void MainWindow::on_BTN_STOP_clicked()
@@ -199,7 +199,6 @@ void MainWindow::on_TEXT_CODE_textChanged()
                     else if (line.split(" ").size()>1){
                         QString new_line = line.split(" ")[1];
                         new_line.remove(";");
-                        qDebug()<<new_line;
                         if(!new_line.startsWith("<") or !new_line.endsWith(">")){
                             tipo = "without < >";
                             Line = QString::number(contador);

@@ -1,5 +1,7 @@
-QT -= gui
+QT += gui
 QT       += network
+QT += widgets
+Qt += core
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -13,7 +15,8 @@ SOURCES += \
         json.cpp \
         main.cpp \
         message.cpp \
-        server.cpp
+        server.cpp \
+        window.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,4 +27,8 @@ HEADERS += \
     client.h \
     json.h \
     message.h \
-    server.h
+    server.h \
+    window.h
+
+FORMS += \
+    window.ui
