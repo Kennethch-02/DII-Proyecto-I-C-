@@ -28,7 +28,6 @@ void server::Do_Action(){
                 Memory.new_int(a[1], a[3].toInt());
                 Message.type = "RAM";
                 Message.action = "Set";
-                qDebug()<<Memory.get_int(a[1]);
                 int *x = Memory.get_int(a[1]);
                 std::stringstream ss;
                 ss << x;
@@ -50,7 +49,7 @@ void server::Do_Action(){
                 Send_Message();
             }
             if(a[0]=="char"){
-                Memory.new_char(a[1], a[3][0]);
+                Memory.new_char(a[1], a[3][1]);
                 Message.type = "RAM";
                 Message.action = "Set";
                 QChar *x = Memory.get_char(a[1]);
@@ -62,7 +61,7 @@ void server::Do_Action(){
                 Send_Message();
             }
             if(a[0]=="long"){
-                Memory.new_long(a[1], a[3].toLongLong());
+                Memory.new_long(a[1], a[3].toLong());
                 Message.type = "RAM";
                 Message.action = "Set";
                 qlonglong *x = Memory.get_long(a[1]);
@@ -119,14 +118,18 @@ void server::Do_Action(){
                 Message.type = "Data";
                 Message.action = "CMD";
                 qlonglong a = *Memory.Dic_Long.value(Received_Message.data);
-                Message.data = "long " + Received_Message.data +" "+ a;
+                string b = std::to_string(a);
+                QString x = QString().fromStdString(b);
+                Message.data = "long " + Received_Message.data +" "+ x;
                 Send_Message();
             }
             if (Memory.Dic_Variables.value(Received_Message.data) == "float"){
                 Message.type = "Data";
                 Message.action = "CMD";
                 float a = *Memory.Dic_Float.value(Received_Message.data);
-                Message.data = "float " + Received_Message.data +" "+ a;
+                string b = std::to_string(a);
+                QString x = QString().fromStdString(b);
+                Message.data = "float " + Received_Message.data +" "+ x;
                 Send_Message();
             }
         }

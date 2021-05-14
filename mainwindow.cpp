@@ -71,7 +71,6 @@ void MainWindow::Interpreter_Message(){
             ui->RAM_value->append(a[1]);
             ui->RAM_var->append(a[2]);
             ui->RAM_ref->append(a[3]);
-            qDebug()<<ui->RAM_memory->toPlainText();
         }
     }
     if (received_message.type == "Data"){
@@ -137,7 +136,7 @@ void MainWindow::Interpreter(){
 
     }
     if (txt_interpreter.split(" ")[0] == "reference"){
-        //copia del valor de memoria de <tipo> dato
+
 
     }
     if (txt_interpreter.split(" ")[0] == "cout"){
