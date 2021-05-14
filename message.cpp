@@ -1,6 +1,10 @@
 #include "message.h"
 using namespace std;
-
+/**
+* \brief Clase que contiene la estructura bàsica del
+* envio de mensajes, para parsearlos a Json
+* @param message()
+*/
 message::message()
 {
 }

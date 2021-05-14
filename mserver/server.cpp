@@ -7,6 +7,11 @@
 #include <QMap>
 #include "string"
 #include <sstream>
+/**
+* \brief Servidor con las partes encargadas para la realizacion correcta de la interpretacion
+* de los mensajes recibidos o enviados.
+* @param QTcpServer()
+*/
 server::server(QObject *parent)
     :QTcpServer(parent)
 {

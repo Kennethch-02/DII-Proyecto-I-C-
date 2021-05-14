@@ -4,6 +4,11 @@
 #include "QJsonDocument"
 #include "QJsonArray"
 #include "QJsonObject"
+/**
+* \brief Clase que se encarga de hacer un parse de la clase message
+* para el envio de mensajes por medio de Json
+* @param json()
+*/
 json::json()
 {
 

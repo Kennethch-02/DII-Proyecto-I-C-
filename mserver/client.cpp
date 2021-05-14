@@ -1,5 +1,9 @@
 #include "client.h"
-
+/**
+* \brief Cliente: Conecta con el servidor para completar el
+* algoritmo Cliente-Servidor
+* @param QTcpSocket
+*/
 client::client(qintptr handle, QObject *parent)
     :QTcpSocket(parent)
 {

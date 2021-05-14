@@ -1,6 +1,10 @@
 #include "dialog.h"
 #include "ui_dialog.h"
-
+/**
+* \brief Interfaz grafica para establecer los parametros
+* puerto y tamaño en memoria del servidor
+* @param QDialog()
+*/
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)

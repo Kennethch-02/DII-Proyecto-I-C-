@@ -3,6 +3,11 @@
 #include "dialog.h"
 #include "QThread"
 #include <thread>
+/**
+* \brief Aplicacion grafica del servidor, genera el apartado visiual e
+* interactivo necesario para cumplir con sus funciones
+* @param QMainWindow
+*/
 mserver::mserver(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::mserver)

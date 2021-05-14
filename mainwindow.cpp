@@ -9,7 +9,11 @@
 #include <QJsonDocument>
 
 using namespace std;
-
+/**
+* \brief Clase que contiene las instrucciones
+* e interpretacion del IDE
+* @param QApplication
+*/
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

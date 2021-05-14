@@ -1,5 +1,10 @@
 #include "memorymanager.h"
 #include "iostream"
+/**
+* \brief Clase que se encarga de realizar un control de la memoria
+* de manera dinamica, junto con la asignaciòn de diccionarios.
+* @param Class MemoryManager()
+*/
 MemoryManager::MemoryManager()
 {
 
