@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     variables.append("double");
     variables.append("struct");
     variables.append("reference");
+    variables.append("cout");
     ui->BTN_RUN->setDisabled(true);
     ui->TEXT_CODE->setDisabled(true);
 }
@@ -73,7 +74,11 @@ void MainWindow::Interpreter_Message(){
             qDebug()<<ui->RAM_memory->toPlainText();
         }
     }
-
+    if (received_message.type == "Data"){
+        if(received_message.action == "CMD"){
+            ui->CMD_TEXT->append("> " + received_message.data);
+        }
+    }
 }
 void MainWindow::Interpreter(){
     Line+=1;
@@ -134,6 +139,18 @@ void MainWindow::Interpreter(){
     if (txt_interpreter.split(" ")[0] == "reference"){
         //copia del valor de memoria de <tipo> dato
 
+    }
+    if (txt_interpreter.split(" ")[0] == "cout"){
+        if (txt_interpreter.split(" ").size() > 1){
+            if(txt_interpreter.split(" ")[1].size()>1){
+                ui->CMD_TEXT->append("> " + txt_interpreter.remove("cout "));
+            }else{
+                Message.type = "Data";
+                Message.action = "GetV";
+                Message.data = txt_interpreter.split(" ")[1];
+                Send_Message();
+            }
+        }
     }
 
 }

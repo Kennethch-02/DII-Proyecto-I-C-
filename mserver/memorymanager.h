@@ -27,9 +27,6 @@ public:
     QChar *M_Char;
     float *M_Float;
     double *M_Double;
-
-private:
-
     QMap<QString, QString> Dic_Variables;
     QMap<QString, int*> Dic_Int;
     QMap<QString, QString*> Dic_String;

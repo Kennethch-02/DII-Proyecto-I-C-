@@ -52,8 +52,8 @@ public:
     QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_3;
     QTextEdit *RAM_memory;
-    QTextEdit *RAM_value;
     QTextEdit *RAM_var;
+    QTextEdit *RAM_value;
     QTextEdit *RAM_ref;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_3;
@@ -170,7 +170,7 @@ public:
 
         horizontalLayoutWidget_3 = new QWidget(centralwidget);
         horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(580, 40, 345, 461));
+        horizontalLayoutWidget_3->setGeometry(QRect(580, 40, 341, 461));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -189,31 +189,31 @@ public:
 
         horizontalLayout_3->addWidget(RAM_memory);
 
-        RAM_value = new QTextEdit(horizontalLayoutWidget_3);
-        RAM_value->setObjectName(QString::fromUtf8("RAM_value"));
-        RAM_value->setEnabled(true);
-        RAM_value->setMinimumSize(QSize(50, 0));
-        RAM_value->setMaximumSize(QSize(50, 16777215));
-        RAM_value->setFont(font1);
-        RAM_value->setReadOnly(true);
-
-        horizontalLayout_3->addWidget(RAM_value);
-
         RAM_var = new QTextEdit(horizontalLayoutWidget_3);
         RAM_var->setObjectName(QString::fromUtf8("RAM_var"));
         RAM_var->setEnabled(true);
-        RAM_var->setMinimumSize(QSize(50, 0));
+        RAM_var->setMinimumSize(QSize(100, 0));
         RAM_var->setMaximumSize(QSize(50, 16777215));
         RAM_var->setFont(font1);
         RAM_var->setReadOnly(true);
 
         horizontalLayout_3->addWidget(RAM_var);
 
+        RAM_value = new QTextEdit(horizontalLayoutWidget_3);
+        RAM_value->setObjectName(QString::fromUtf8("RAM_value"));
+        RAM_value->setEnabled(true);
+        RAM_value->setMinimumSize(QSize(25, 0));
+        RAM_value->setMaximumSize(QSize(25, 16777215));
+        RAM_value->setFont(font1);
+        RAM_value->setReadOnly(true);
+
+        horizontalLayout_3->addWidget(RAM_value);
+
         RAM_ref = new QTextEdit(horizontalLayoutWidget_3);
         RAM_ref->setObjectName(QString::fromUtf8("RAM_ref"));
         RAM_ref->setEnabled(true);
-        RAM_ref->setMinimumSize(QSize(50, 0));
-        RAM_ref->setMaximumSize(QSize(50, 16777215));
+        RAM_ref->setMinimumSize(QSize(25, 0));
+        RAM_ref->setMaximumSize(QSize(25, 16777215));
         RAM_ref->setFont(font1);
         RAM_ref->setReadOnly(true);
 

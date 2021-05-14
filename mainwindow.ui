@@ -206,7 +206,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>580</x>
       <y>40</y>
-      <width>345</width>
+      <width>341</width>
       <height>461</height>
      </rect>
     </property>
@@ -252,13 +252,13 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-      <widget class="QTextEdit" name="RAM_value">
+      <widget class="QTextEdit" name="RAM_var">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>100</width>
          <height>0</height>
         </size>
        </property>
@@ -279,19 +279,19 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-      <widget class="QTextEdit" name="RAM_var">
+      <widget class="QTextEdit" name="RAM_value">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>25</width>
          <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>25</width>
          <height>16777215</height>
         </size>
        </property>
@@ -312,13 +312,13 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>25</width>
          <height>0</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>25</width>
          <height>16777215</height>
         </size>
        </property>

@@ -92,6 +92,45 @@ void server::Do_Action(){
             Memory.free_space();
         }
     }
+    if (Received_Message.type == "Data"){
+        if(Received_Message.action == "GetV"){
+            if (Memory.Dic_Variables.value(Received_Message.data) == "int"){
+                Message.type = "Data";
+                Message.action = "CMD";
+                int a = *Memory.Dic_Int.value(Received_Message.data);
+                Message.data = "int " + Received_Message.data +" "+ QString::number(a);
+                Send_Message();
+            }
+            if (Memory.Dic_Variables.value(Received_Message.data) == "string"){
+                Message.type = "Data";
+                Message.action = "CMD";
+                QString a = *Memory.Dic_String.value(Received_Message.data);
+                Message.data = "string " + Received_Message.data +" "+ a;
+                Send_Message();
+            }
+            if (Memory.Dic_Variables.value(Received_Message.data) == "char"){
+                Message.type = "Data";
+                Message.action = "CMD";
+                QString a = *Memory.Dic_Char.value(Received_Message.data);
+                Message.data = "char " + Received_Message.data +" "+ a;
+                Send_Message();
+            }
+            if (Memory.Dic_Variables.value(Received_Message.data) == "long"){
+                Message.type = "Data";
+                Message.action = "CMD";
+                qlonglong a = *Memory.Dic_Long.value(Received_Message.data);
+                Message.data = "long " + Received_Message.data +" "+ a;
+                Send_Message();
+            }
+            if (Memory.Dic_Variables.value(Received_Message.data) == "float"){
+                Message.type = "Data";
+                Message.action = "CMD";
+                float a = *Memory.Dic_Float.value(Received_Message.data);
+                Message.data = "float " + Received_Message.data +" "+ a;
+                Send_Message();
+            }
+        }
+    }
     Received_Message.clear();
 }
 void server::Send_Message(){
