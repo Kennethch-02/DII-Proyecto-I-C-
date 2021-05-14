@@ -17,6 +17,7 @@ SOURCES += \
     dialog.cpp \
     json.cpp \
     main.cpp \
+    memorymanager.cpp \
     message.cpp \
     mserver.cpp \
     server.cpp
@@ -25,6 +26,7 @@ HEADERS += \
     client.h \
     dialog.h \
     json.h \
+    memorymanager.h \
     message.h \
     mserver.h \
     server.h

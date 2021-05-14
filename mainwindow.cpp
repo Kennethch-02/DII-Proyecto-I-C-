@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     in_struct = false;
     variables.append("int");
+    variables.append("string");
     variables.append("long");
     variables.append("char");
     variables.append("float");
@@ -57,6 +58,17 @@ void MainWindow::Send_Message(){
     A.flush();
 }
 void MainWindow::Interpreter_Message(){
+    if (received_message.type == "RAM"){
+        if (received_message.action == "Set"){
+            QStringList a = received_message.data.split(" ");
+            QString o = a[0];
+            ui->RAM_memory->append(o);
+            ui->RAM_value->append(a[1]);
+            ui->RAM_var->append(a[2]);
+            ui->RAM_ref->append(a[3]);
+            qDebug()<<ui->RAM_memory->toPlainText();
+        }
+    }
 
 }
 void MainWindow::Interpreter(){
@@ -68,6 +80,7 @@ void MainWindow::Interpreter(){
         ui->ProgressBar->setValue(Line*(100/List_size));
     }
     QString txt_interpreter = List_Code[0];
+    txt_interpreter.remove(";");
     //Interpretacion basica del codigo
     ui->TEXT_CODE->append(List_Code[0]);
     ui->TEXT_CODE->selectAll();
@@ -76,24 +89,39 @@ void MainWindow::Interpreter(){
     if (txt_interpreter.split(" ")[0] == "int"){
         Message.type = "Data";
         Message.action = "Set";
-        Message.data = txt_interpreter.split("int ")[1];
+        Message.data = txt_interpreter;
         Send_Message();
     }
     if (txt_interpreter.split(" ")[0] == "long"){
-        //qlonglong
+        Message.type = "Data";
+        Message.action = "Set";
+        Message.data = txt_interpreter;
+        Send_Message();
 
     }
     if (txt_interpreter.split(" ")[0] == "float"){
-        //float a = 213.0;
-
+        Message.type = "Data";
+        Message.action = "Set";
+        Message.data = txt_interpreter;
+        Send_Message();
     }
     if (txt_interpreter.split(" ")[0] == "double"){
-        //double b = 9999.2912;
-
+        Message.type = "Data";
+        Message.action = "Set";
+        Message.data = txt_interpreter;
+        Send_Message();
     }
     if (txt_interpreter.split(" ")[0] == "char"){
-        //"a"
-
+        Message.type = "Data";
+        Message.action = "Set";
+        Message.data = txt_interpreter;
+        Send_Message();
+    }
+    if (txt_interpreter.split(" ")[0] == "string"){
+        Message.type = "Data";
+        Message.action = "Set";
+        Message.data = txt_interpreter;
+        Send_Message();
     }
     if (txt_interpreter.split(" ")[0] == "struct"){
         //estructura adicional
@@ -131,7 +159,12 @@ void MainWindow::on_BTN_STOP_clicked()
     Line = 0;
     ui->TEXT_CODE->setText(Code);
     ui->BTN_RUN->setDisabled(false);
+    ui->BTN_STOP->setDisabled(true);
     ui->BTN_NEXT->setDisabled(true);
+    ui->RAM_memory->clear();
+    ui->RAM_ref->clear();
+    ui->RAM_value->clear();
+    ui->RAM_var->clear();
 }
 void MainWindow::on_BTN_NEXT_clicked()
 {
@@ -172,20 +205,6 @@ void MainWindow::on_TEXT_CODE_textChanged()
                         tipo = "without ;";
                         Line = QString::number(contador);
                         Errors.append("Error: "+tipo+" Line: " + Line);
-                    }else if(line.endsWith(";")){
-                        line.remove(";");
-                        QStringList x = line.split(" ");
-                        x.removeAll("");
-                        qDebug()<<x;
-                        int size  = x.size();
-                        if(size != 2 and size != 4){
-                            if(line.split(" ")[0] != "}"){
-                                tipo = "invalid declaration";
-                                Line = QString::number(contador);
-                                Errors.append("Error: "+tipo+" Line: " + Line);
-                            }
-                        }
-                        line.append(";");
                     }
                 }
                 if (var == "struct"){

@@ -51,10 +51,10 @@ public:
     QTextEdit *TEXT_CODE;
     QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_3;
-    QTextEdit *RAM_1;
-    QTextEdit *RAM_2;
-    QTextEdit *RAM_3;
-    QTextEdit *RAM_4;
+    QTextEdit *RAM_memory;
+    QTextEdit *RAM_value;
+    QTextEdit *RAM_var;
+    QTextEdit *RAM_ref;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_3;
     QTextEdit *CMD_TEXT;
@@ -68,12 +68,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(799, 770);
+        MainWindow->resize(923, 810);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayoutWidget_2 = new QWidget(centralwidget);
         horizontalLayoutWidget_2->setObjectName(QString::fromUtf8("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(0, 0, 801, 41));
+        horizontalLayoutWidget_2->setGeometry(QRect(0, 0, 921, 41));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -170,50 +170,58 @@ public:
 
         horizontalLayoutWidget_3 = new QWidget(centralwidget);
         horizontalLayoutWidget_3->setObjectName(QString::fromUtf8("horizontalLayoutWidget_3"));
-        horizontalLayoutWidget_3->setGeometry(QRect(580, 40, 221, 461));
+        horizontalLayoutWidget_3->setGeometry(QRect(580, 40, 345, 461));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_3);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        RAM_1 = new QTextEdit(horizontalLayoutWidget_3);
-        RAM_1->setObjectName(QString::fromUtf8("RAM_1"));
-        RAM_1->setEnabled(true);
+        RAM_memory = new QTextEdit(horizontalLayoutWidget_3);
+        RAM_memory->setObjectName(QString::fromUtf8("RAM_memory"));
+        RAM_memory->setEnabled(true);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(100);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(RAM_1->sizePolicy().hasHeightForWidth());
-        RAM_1->setSizePolicy(sizePolicy);
-        RAM_1->setMaximumSize(QSize(50, 16777215));
-        RAM_1->setReadOnly(true);
+        sizePolicy.setHeightForWidth(RAM_memory->sizePolicy().hasHeightForWidth());
+        RAM_memory->setSizePolicy(sizePolicy);
+        RAM_memory->setMinimumSize(QSize(100, 0));
+        RAM_memory->setMaximumSize(QSize(1000, 16777215));
+        RAM_memory->setFont(font1);
+        RAM_memory->setReadOnly(true);
 
-        horizontalLayout_3->addWidget(RAM_1);
+        horizontalLayout_3->addWidget(RAM_memory);
 
-        RAM_2 = new QTextEdit(horizontalLayoutWidget_3);
-        RAM_2->setObjectName(QString::fromUtf8("RAM_2"));
-        RAM_2->setEnabled(true);
-        RAM_2->setMaximumSize(QSize(50, 16777215));
-        RAM_2->setReadOnly(true);
+        RAM_value = new QTextEdit(horizontalLayoutWidget_3);
+        RAM_value->setObjectName(QString::fromUtf8("RAM_value"));
+        RAM_value->setEnabled(true);
+        RAM_value->setMinimumSize(QSize(50, 0));
+        RAM_value->setMaximumSize(QSize(50, 16777215));
+        RAM_value->setFont(font1);
+        RAM_value->setReadOnly(true);
 
-        horizontalLayout_3->addWidget(RAM_2);
+        horizontalLayout_3->addWidget(RAM_value);
 
-        RAM_3 = new QTextEdit(horizontalLayoutWidget_3);
-        RAM_3->setObjectName(QString::fromUtf8("RAM_3"));
-        RAM_3->setEnabled(true);
-        RAM_3->setMaximumSize(QSize(50, 16777215));
-        RAM_3->setReadOnly(true);
+        RAM_var = new QTextEdit(horizontalLayoutWidget_3);
+        RAM_var->setObjectName(QString::fromUtf8("RAM_var"));
+        RAM_var->setEnabled(true);
+        RAM_var->setMinimumSize(QSize(50, 0));
+        RAM_var->setMaximumSize(QSize(50, 16777215));
+        RAM_var->setFont(font1);
+        RAM_var->setReadOnly(true);
 
-        horizontalLayout_3->addWidget(RAM_3);
+        horizontalLayout_3->addWidget(RAM_var);
 
-        RAM_4 = new QTextEdit(horizontalLayoutWidget_3);
-        RAM_4->setObjectName(QString::fromUtf8("RAM_4"));
-        RAM_4->setEnabled(true);
-        RAM_4->setMaximumSize(QSize(50, 16777215));
-        RAM_4->setReadOnly(true);
+        RAM_ref = new QTextEdit(horizontalLayoutWidget_3);
+        RAM_ref->setObjectName(QString::fromUtf8("RAM_ref"));
+        RAM_ref->setEnabled(true);
+        RAM_ref->setMinimumSize(QSize(50, 0));
+        RAM_ref->setMaximumSize(QSize(50, 16777215));
+        RAM_ref->setFont(font1);
+        RAM_ref->setReadOnly(true);
 
-        horizontalLayout_3->addWidget(RAM_4);
+        horizontalLayout_3->addWidget(RAM_ref);
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(0, 500, 801, 221));
+        verticalLayoutWidget_3->setGeometry(QRect(0, 500, 921, 221));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -225,7 +233,7 @@ public:
 
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 720, 801, 58));
+        gridLayoutWidget->setGeometry(QRect(0, 720, 931, 58));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -270,6 +278,11 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Source Code Pro'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">0</p></body></html>", nullptr));
+        RAM_memory->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         CMD_TEXT->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

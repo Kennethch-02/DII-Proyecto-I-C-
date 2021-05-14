@@ -5,6 +5,8 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QMap>
+#include "string"
+#include <sstream>
 server::server(QObject *parent)
     :QTcpServer(parent)
 {
@@ -16,15 +18,73 @@ bool server::startServer(quint16 port){
 void server::Do_Action(){
     if (Received_Message.type == "Data"){
         if (Received_Message.action == "Set"){
-            QString Data = Received_Message.data;
-            int *b = new int;
-            *b = Data.split(" ")[2].toInt();
-            dic_Datos.insert(Data.split(" ")[0], b);
+            QStringList a = Received_Message.data.split(" ");
+            if(a[0]=="int"){
+                Memory.new_int(a[1], a[3].toInt());
+                Message.type = "RAM";
+                Message.action = "Set";
+                qDebug()<<Memory.get_int(a[1]);
+                int *x = Memory.get_int(a[1]);
+                std::stringstream ss;
+                ss << x;
+                std::string address = ss.str();
+                QString m = QString::fromStdString(address)+" ";
+                Message.data = m+a[1]+" "+a[3]+" 1";
+                Send_Message();
+            }
+            if(a[0]=="string"){
+                Memory.new_string(a[1], a[3]);
+                Message.type = "RAM";
+                Message.action = "Set";
+                QString *x = Memory.get_string(a[1]);
+                std::stringstream ss;
+                ss << x;
+                std::string address = ss.str();
+                QString m = QString::fromStdString(address)+" ";
+                Message.data = m+a[1]+" "+a[3]+" 1";
+                Send_Message();
+            }
+            if(a[0]=="char"){
+                Memory.new_char(a[1], a[3][0]);
+                Message.type = "RAM";
+                Message.action = "Set";
+                QChar *x = Memory.get_char(a[1]);
+                std::stringstream ss;
+                ss << x;
+                std::string address = ss.str();
+                QString m = QString::fromStdString(address)+" ";
+                Message.data = m+a[1]+" "+a[3]+" 1";
+                Send_Message();
+            }
+            if(a[0]=="long"){
+                Memory.new_long(a[1], a[3].toLongLong());
+                Message.type = "RAM";
+                Message.action = "Set";
+                qlonglong *x = Memory.get_long(a[1]);
+                std::stringstream ss;
+                ss << x;
+                std::string address = ss.str();
+                QString m = QString::fromStdString(address)+" ";
+                Message.data = m+a[1]+" "+a[3]+" 1";
+                Send_Message();
+            }
+            if(a[0]=="float"){
+                Memory.new_float(a[1], a[3].toFloat());
+                Message.type = "RAM";
+                Message.action = "Set";
+                float *x = Memory.get_float(a[1]);
+                std::stringstream ss;
+                ss << x;
+                std::string address = ss.str();
+                QString m = QString::fromStdString(address)+" ";
+                Message.data = m+a[1]+" "+a[3]+" 1";
+                Send_Message();
+            }
         }
     }
     if (Received_Message.type == "Notify"){
         if(Received_Message.action == "Clear"){
-            dic_Datos.clear();
+            Memory.free_space();
         }
     }
     Received_Message.clear();
@@ -49,7 +109,6 @@ void server::incomingConnection(qintptr handle){
     Message.data = ">Servidor: Se ha Conectado";
     Message.action = "null";
     Send_Message();
-
     connect(socket, &client::AppReadyRead, [&](client *S){
         //Recepcion de Mensajes
         QTextStream T(S);
