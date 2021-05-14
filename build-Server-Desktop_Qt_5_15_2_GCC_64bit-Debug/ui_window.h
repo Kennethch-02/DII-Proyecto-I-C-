@@ -87,7 +87,7 @@ public:
     {
         window->setWindowTitle(QCoreApplication::translate("window", "Server Settings", nullptr));
         label_2->setText(QCoreApplication::translate("window", "Port", nullptr));
-        label->setText(QCoreApplication::translate("window", "Memory (bits)", nullptr));
+        label->setText(QCoreApplication::translate("window", "Memory (bytes)", nullptr));
         Accept->setText(QCoreApplication::translate("window", "Accept", nullptr));
         Cancel->setText(QCoreApplication::translate("window", "Cancel", nullptr));
     } // retranslateUi

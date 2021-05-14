@@ -19,7 +19,7 @@
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -37,6 +37,10 @@ public:
     QPushButton *BTN_STOP;
     QPushButton *BTN_NEXT;
     QSpacerItem *horizontalSpacer;
+    QLabel *label_2;
+    QSpinBox *port;
+    QPushButton *connect;
+    QSpacerItem *horizontalSpacer_3;
     QLabel *label;
     QSpacerItem *horizontalSpacer_2;
     QWidget *verticalLayoutWidget;
@@ -59,7 +63,6 @@ public:
     QLineEdit *CLEAR;
     QLineEdit *APLICATION_LOG;
     QProgressBar *ProgressBar;
-    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -96,6 +99,28 @@ public:
         horizontalSpacer = new QSpacerItem(80, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
+
+        label_2 = new QLabel(horizontalLayoutWidget_2);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        horizontalLayout->addWidget(label_2);
+
+        port = new QSpinBox(horizontalLayoutWidget_2);
+        port->setObjectName(QString::fromUtf8("port"));
+        port->setMinimum(1200);
+        port->setMaximum(20000);
+        port->setValue(1200);
+
+        horizontalLayout->addWidget(port);
+
+        connect = new QPushButton(horizontalLayoutWidget_2);
+        connect->setObjectName(QString::fromUtf8("connect"));
+
+        horizontalLayout->addWidget(connect);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
 
         label = new QLabel(horizontalLayoutWidget_2);
         label->setObjectName(QString::fromUtf8("label"));
@@ -188,7 +213,7 @@ public:
 
         verticalLayoutWidget_3 = new QWidget(centralwidget);
         verticalLayoutWidget_3->setObjectName(QString::fromUtf8("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(0, 500, 801, 191));
+        verticalLayoutWidget_3->setGeometry(QRect(0, 500, 801, 221));
         verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -200,7 +225,7 @@ public:
 
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 690, 801, 51));
+        gridLayoutWidget->setGeometry(QRect(0, 720, 801, 58));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -225,9 +250,6 @@ public:
         gridLayout->addWidget(ProgressBar, 3, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -240,6 +262,8 @@ public:
         BTN_RUN->setText(QCoreApplication::translate("MainWindow", "RUN", nullptr));
         BTN_STOP->setText(QCoreApplication::translate("MainWindow", "STOP", nullptr));
         BTN_NEXT->setText(QCoreApplication::translate("MainWindow", "NEXT", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Server", nullptr));
+        connect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "RAM LIVE VIEW", nullptr));
         NUM_LINE->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

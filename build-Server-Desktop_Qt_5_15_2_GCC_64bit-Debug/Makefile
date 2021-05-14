@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../Server -I. -I../../../Qt/5.15.2/gcc_64/include -I../../../Qt/5.15.2/gcc_64/include/QtWidgets -I../../../Qt/5.15.2/gcc_64/include/QtGui -I../../../Qt/5.15.2/gcc_64/include/QtNetwork -I../../../Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I. -I../../../Qt/5.15.2/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../Server -I. -I../../../Qt/5.15.2/gcc_64/include -I../../../Qt/5.15.2/gcc_64/include/QtWidgets -I../../../Qt/5.15.2/gcc_64/include/QtGui -I../../../Qt/5.15.2/gcc_64/include/QtNetwork -I../../../Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/libdrm -I../../../Qt/5.15.2/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/kenneth/Qt/5.15.2/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -56,19 +56,15 @@ SOURCES       = ../Server/client.cpp \
 		../Server/json.cpp \
 		../Server/main.cpp \
 		../Server/message.cpp \
-		../Server/server.cpp \
-		../Server/window.cpp moc_client.cpp \
-		moc_server.cpp \
-		moc_window.cpp
+		../Server/server.cpp moc_client.cpp \
+		moc_server.cpp
 OBJECTS       = client.o \
 		json.o \
 		main.o \
 		message.o \
 		server.o \
-		window.o \
 		moc_client.o \
-		moc_server.o \
-		moc_window.o
+		moc_server.o
 DIST          = ../../../Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.15.2/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt/5.15.2/gcc_64/mkspecs/common/linux.conf \
@@ -249,13 +245,11 @@ DIST          = ../../../Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../Server/Server.pro ../Server/client.h \
 		../Server/json.h \
 		../Server/message.h \
-		../Server/server.h \
-		../Server/window.h ../Server/client.cpp \
+		../Server/server.h ../Server/client.cpp \
 		../Server/json.cpp \
 		../Server/main.cpp \
 		../Server/message.cpp \
-		../Server/server.cpp \
-		../Server/window.cpp
+		../Server/server.cpp
 QMAKE_TARGET  = Server
 DESTDIR       = 
 TARGET        = Server
@@ -264,7 +258,7 @@ TARGET        = Server
 first: all
 ####### Build rules
 
-Server: ui_window.h $(OBJECTS)  
+Server:  $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Server/Server.pro ../../../Qt/5.15.2/gcc_64/mkspecs/linux-g++/qmake.conf ../../../Qt/5.15.2/gcc_64/mkspecs/features/spec_pre.prf \
@@ -639,9 +633,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Server/client.h ../Server/json.h ../Server/message.h ../Server/server.h ../Server/window.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Server/client.cpp ../Server/json.cpp ../Server/main.cpp ../Server/message.cpp ../Server/server.cpp ../Server/window.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Server/window.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Server/client.h ../Server/json.h ../Server/message.h ../Server/server.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Server/client.cpp ../Server/json.cpp ../Server/main.cpp ../Server/message.cpp ../Server/server.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -673,9 +666,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../../Qt/5.15.2/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_client.cpp moc_server.cpp moc_window.cpp
+compiler_moc_header_make_all: moc_client.cpp moc_server.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_client.cpp moc_server.cpp moc_window.cpp
+	-$(DEL_FILE) moc_client.cpp moc_server.cpp
 moc_client.cpp: ../Server/client.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpSocket \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtcpsocket.h \
@@ -845,133 +838,19 @@ moc_server.cpp: ../Server/server.h \
 		../../../Qt/5.15.2/gcc_64/bin/moc
 	/home/kenneth/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include /home/kenneth/Escritorio/Proyecto-I-C-/build-Server-Desktop_Qt_5_15_2_GCC_64bit-Debug/moc_predefs.h -I/home/kenneth/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I/home/kenneth/Escritorio/Proyecto-I-C-/Server -I/home/kenneth/Qt/5.15.2/gcc_64/include -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtWidgets -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtGui -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtNetwork -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Server/server.h -o moc_server.cpp
 
-moc_window.cpp: ../Server/window.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QDialog \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qdialog.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtguiglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtgui-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmargins.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qrect.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsize.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgba64.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qbrush.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qmatrix.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpolygon.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qregion.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qline.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtransform.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qimage.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfont.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qevent.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qset.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfile.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtouchdevice.h \
-		moc_predefs.h \
-		../../../Qt/5.15.2/gcc_64/bin/moc
-	/home/kenneth/Qt/5.15.2/gcc_64/bin/moc $(DEFINES) --include /home/kenneth/Escritorio/Proyecto-I-C-/build-Server-Desktop_Qt_5_15_2_GCC_64bit-Debug/moc_predefs.h -I/home/kenneth/Qt/5.15.2/gcc_64/mkspecs/linux-g++ -I/home/kenneth/Escritorio/Proyecto-I-C-/Server -I/home/kenneth/Qt/5.15.2/gcc_64/include -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtWidgets -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtGui -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtNetwork -I/home/kenneth/Qt/5.15.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Server/window.h -o moc_window.cpp
-
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_window.h
+compiler_uic_make_all:
 compiler_uic_clean:
-	-$(DEL_FILE) ui_window.h
-ui_window.h: ../Server/window.ui \
-		../../../Qt/5.15.2/gcc_64/bin/uic
-	/home/kenneth/Qt/5.15.2/gcc_64/bin/uic ../Server/window.ui -o ui_window.h
-
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -1191,68 +1070,24 @@ main.o: ../Server/main.cpp ../../../Qt/5.15.2/gcc_64/include/QtCore/QCoreApplica
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtguiglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtgui-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsize.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmargins.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qrect.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgba64.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qbrush.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qmatrix.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpolygon.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qregion.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qline.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtransform.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qimage.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfont.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qevent.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qset.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfile.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QTextStream \
 		../Server/server.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpServer \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtcpserver.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qhash.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qmap.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qset.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qhostaddress.h \
 		../Server/message.h \
 		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpSocket \
@@ -1266,15 +1101,14 @@ main.o: ../Server/main.cpp ../../../Qt/5.15.2/gcc_64/include/QtCore/QCoreApplica
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborcommon.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qurl.h \
+		../../../Qt/5.15.2/gcc_64/include/QtCore/qurlquery.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/quuid.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonArray \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsondocument.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QMap \
-		../Server/window.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QDialog \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qdialog.h
+		../../../Qt/5.15.2/gcc_64/include/QtCore/QMap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Server/main.cpp
 
 message.o: ../Server/message.cpp ../Server/message.h \
@@ -1448,147 +1282,11 @@ server.o: ../Server/server.cpp ../Server/server.h \
 		../../../Qt/5.15.2/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o ../Server/server.cpp
 
-window.o: ../Server/window.cpp ../Server/window.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/QDialog \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qdialog.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtguiglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qflags.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtgui-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringview.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qpair.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvector.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qpoint.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qregexp.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmargins.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qrect.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsize.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpalette.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcolor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgb.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qrgba64.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qbrush.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qmatrix.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpolygon.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qregion.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qline.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtransform.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qimage.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixelformat.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qpixmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfont.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qfontinfo.h \
-		../../../Qt/5.15.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qcursor.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qkeysequence.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qevent.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qset.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurl.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qurlquery.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfile.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qfiledevice.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt/5.15.2/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_window.h \
-		../Server/server.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpServer \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtcpserver.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtnetwork-config.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qabstractsocket.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qhostaddress.h \
-		../Server/message.h \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/QTcpSocket \
-		../../../Qt/5.15.2/gcc_64/include/QtNetwork/qtcpsocket.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QString \
-		../Server/json.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonObject \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonobject.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonvalue.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborvalue.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qcborcommon.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qregularexpression.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/quuid.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonArray \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsonarray.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QJsonDocument \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/qjsondocument.h \
-		../../../Qt/5.15.2/gcc_64/include/QtCore/QMap
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o window.o ../Server/window.cpp
-
 moc_client.o: moc_client.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_client.o moc_client.cpp
 
 moc_server.o: moc_server.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_server.o moc_server.cpp
-
-moc_window.o: moc_window.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_window.o moc_window.cpp
 
 ####### Install
 

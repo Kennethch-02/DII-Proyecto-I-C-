@@ -21,12 +21,15 @@ private slots:
     void on_BTN_STOP_clicked();
     void on_BTN_NEXT_clicked();
     void on_TEXT_CODE_textChanged();
+    void on_connect_clicked();
+
 private:
     void Send_Message();
     void Interpreter();
     void Interpreter_Message();
     int List_size;
     int Line;
+    int port;
     bool in_struct;
     Ui::MainWindow *ui;
     QTcpSocket *mSocket;

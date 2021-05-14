@@ -30,15 +30,20 @@ MainWindow::MainWindow(QWidget *parent)
     variables.append("double");
     variables.append("struct");
     variables.append("reference");
+    ui->BTN_RUN->setDisabled(true);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 void MainWindow::Connect(){
-    mSocket->connectToHost("localhost", 1234);
+    qDebug()<<port;
+    mSocket->connectToHost("localhost", port);
+    ui->BTN_RUN->setDisabled(false);
+    ui->connect->setDisabled(true);
+    ui->port->setDisabled(true);
     ui->ProgressBar->setValue(100);
-    ui->APLICATION_LOG->setText("Conectando al servidor");
+    ui->APLICATION_LOG->setText("Conectado al servidor");
 }
 void MainWindow::Send_Message(){
     QTextStream A(mSocket);
@@ -249,4 +254,10 @@ void MainWindow::on_TEXT_CODE_textChanged()
         ui->BTN_RUN->setDisabled(false);
     }
     Errors.clear();
+}
+
+void MainWindow::on_connect_clicked()
+{
+    port = ui->port->value();
+    Connect();
 }

@@ -15,8 +15,7 @@ SOURCES += \
         json.cpp \
         main.cpp \
         message.cpp \
-        server.cpp \
-        window.cpp
+        server.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -27,8 +26,6 @@ HEADERS += \
     client.h \
     json.h \
     message.h \
-    server.h \
-    window.h
+    server.h
 
-FORMS += \
-    window.ui
+FORMS +=
