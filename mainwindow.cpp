@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     variables.append("struct");
     variables.append("reference");
     ui->BTN_RUN->setDisabled(true);
+    ui->TEXT_CODE->setDisabled(true);
 }
 MainWindow::~MainWindow()
 {
@@ -44,6 +45,7 @@ void MainWindow::Connect(){
     ui->port->setDisabled(true);
     ui->ProgressBar->setValue(100);
     ui->APLICATION_LOG->setText("Conectado al servidor");
+    ui->TEXT_CODE->setDisabled(false);
 }
 void MainWindow::Send_Message(){
     QTextStream A(mSocket);
